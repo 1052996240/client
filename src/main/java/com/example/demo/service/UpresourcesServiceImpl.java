@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.mapperdao1.UpresourcesMapper;
+import com.example.demo.entity.Report;
 import com.example.demo.entity.Upresources;
 import com.example.demo.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class UpresourcesServiceImpl {
         upresources.setS003(path);
         upresources.setS004(leixing);
         if (reportService.eqCunZhai(waterNumber)) {
-            reportService.repairs(null,"0");
+            Report report = new Report();
+            report.setR050("0");
+            reportService.repairs(report);
         }
         upresourcesMapper.insertSelective(upresources);
     }
