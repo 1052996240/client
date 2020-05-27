@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script src="/js/vue.js"></script>
+		<link rel="stylesheet" href="/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<link href="/css/repair.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="/layui/layui.js" charset="UTF-8"></script>
+		<script >
+			document.addEventListener('plusready', function() {
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
+
+			});
+		</script>
+
+	</head>
+	<body>
+	<form class="layui-form" style="margin-top: 2%;">
+		<div id="mainDIV">
+			<!-- 基本信息 -->
+			<div id="title"><span id="first-span">
+						<h3>自助报修单</h3>
+					</span></div>
+			<div id="first">
+
+				<label id="first-lable-title">
+					<h4><strong>基本信息:</strong></h4>
+				</label>
+				<table class="table">
+					<tr>
+						<td>客户简称:</td>
+						<td><label id="clientName">{{mydata.data.field_zi2Ag__c}}</label></td>
+						<td>地区:</td>
+						<td><label id="city">{{mydata.city__r}}</label></td>
+					</tr>
+					<tr>
+						<td>出厂编号:</td>
+						<td><label id="FactoryNumber">{{mydata.data.name}}</label></td>
+						<td>机型:</td>
+						<td><label id="MachineType">{{mydata.data.field_02D6t__c}}</label></td>
+					</tr>
+					<tr>
+						<td>出厂日期:</td>
+						<td><label id="ProDate">{{mydata.data.field_S19rF__c}}</label></td>
+						<td>报修截止日:</td>
+						<td><label id="Repair">{{mydata.data.field_ATcjj__c}}</label></td>
+					</tr>
+				</table>
+				<input type="text" id="reCode"  style="display: none;"/>
+			</div>
+			<!-- 故障信息 -->
+			<div id="second">
+				<label>
+					<h4><strong>故障信息:</strong></h4>
+				</label><br />
+				<div class="input-group" style="width: 96%; margin-left: 2%;">
+					<span class="input-group-addon">故障描述:</span>
+					<input id="postReport" type="text" class="form-control" required="required">
+				</div>
+			</div>
+
+			<!-- 上传视频 图片 -->
+			<div id="third">
+				<div class="layui-upload">
+					<div id="upImg" style="width: 15%;height: 16%;border:1px dashed #C0C0C0;border-radius: 5px;padding-left: 1%;margin-left: 2%;margin-top: 4%;">
+						<img src="img/addImage.png" /><br />
+					</div>
+
+					<blockquote class="layui-elem-quote layui-quote-nm" id="imgView" style="margin-top: 4%; width: 95%;margin-left: 2%;display: none;">
+						<span onclick="deleteImg()">重新上传</span>
+						<div class="layui-upload-list" id="demo2"></div>
+					</blockquote>
+					<button type="button" class="layui-btn" id="uploadImage">上传图片</button>
+				</div>
+
+
+				<div id="upVideo" style="width: 15%;height: 16%;border:1px dashed #C0C0C0;border-radius: 5px;padding-left: 1%;margin-left: 2%;margin-top: 4%;">
+					<img src="img/video.png" /><br />
+				</div>
+				<blockquote class="layui-elem-quote layui-quote-nm" id="videoView" style="margin-top: 10px; width: 95%;margin-left: 2%;display: none;">
+					<div class="layui-upload-list" id="videoDiv"></div>
+				</blockquote>
+				<button type="button" class="layui-btn" id="uploadVideo">上传视频</button>
+			</div>
+
+			<div id="fourth">
+				<button id="subBtn" type="button" onclick="sub()" class="btn btn-danger">提交报修</button>
+			</div>
+		</div>
+	</form>
+	</body>
+	<script>
+        var basePath = "http://localhost:8091";
+        layui.use(['upload', 'form', 'element', 'layer'], function() {
+            var $ = layui.jquery,
+                upload = layui.upload,
+                element = layui.element;
+            var layer = layui.layer;
+            upload.render({
+                elem: '#upImg',
+                //basePath + '/report/relgoods/images'
+                url: basePath + '/report/relgoods/images', //改成您自己的上传接口
+                auto: false,
+                accept: 'image/*',
+                bindAction: '#uploadImage',
+                multiple: true,
+                choose: function(obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result) {
+                        $('#imgView').show();
+                        $('#demo2').append('<img src="' + result + '" alt="' + file.name +
+                            '" class="layui-upload-img" style="width:21%;height:18%;margin-left:3%;margin-top:3%;" onclick="imgView(this)">'
+                        )
+                    });
+                },
+                done: function(res) {
+                    //上传完毕
+                    console.log(res.code);
+                    document.getElementById('reCode').value=res.code;
+                }
+            });
+            upload.render({
+                elem: '#upVideo',
+                //basePath + '/report/relgoods/video'
+                url: basePath + '/report/relgoods/video', //改成您自己的上传接口
+                accept: 'video', //视频
+                auto: false,
+                bindAction: '#uploadVideo',
+                exts: 'wmv|mov|mp4',
+                choose: function(obj) {
+                    obj.preview(function(index, file, result) {
+                        $('#videoView').show();
+                        <!-- src="' + result + '" alt="' + file.name + -->
+                        $('#videoDiv').append(
+                            '<video controls="controls" autobuffer="autobuffer" loop="loop" style="width:90%;height:35%;margin-left:5%;margin-top:3%;"><source src="' +
+                            result + '" alt="' + file.name + '"></source></video>')
+                    })
+                },
+                done: function(res) {
+                    console.log(res.code);
+                }
+            });
+        });
+
+        var getInfo = new Vue({
+            el: 'table',
+            data() {
+                return {
+                    mydata: []
+                }
+            },
+            mounted() {
+                axios
+                    .get(basePath + '/machine/getMachineInformation/5ec330d483ef2e00016082b9')
+                    .then(response => (this.mydata = response.data))
+            }
+        })
+
+        function deleteImg(){
+            document.getElementById("demo2").innerHTML="";
+            document.getElementById("imgView").style="display:none";
+        }
+
+        function sub(){
+            var content = document.getElementById('demo2').innerText;
+            if(content==null||content.length==0){
+                alert('内容为空');
+            }
+            else
+            {
+                alert('有内容');
+            }
+        }
+	</script>
+</html>

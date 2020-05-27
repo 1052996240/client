@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.mapperdao1.MachineMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Machine" >
+    <id column="M001" property="m001" jdbcType="CHAR" />
+    <result column="M002" property="m002" jdbcType="CHAR" />
+    <result column="M003" property="m003" jdbcType="CHAR" />
+    <result column="M004" property="m004" jdbcType="CHAR" />
+    <result column="M005" property="m005" jdbcType="CHAR" />
+    <result column="M006" property="m006" jdbcType="CHAR" />
+    <result column="M007" property="m007" jdbcType="CHAR" />
+    <result column="M008" property="m008" jdbcType="CHAR" />
+    <result column="M009" property="m009" jdbcType="CHAR" />
+    <result column="M010" property="m010" jdbcType="CHAR" />
+    <result column="M011" property="m011" jdbcType="CHAR" />
+    <result column="M012" property="m012" jdbcType="CHAR" />
+    <result column="M013" property="m013" jdbcType="CHAR" />
+    <result column="M014" property="m014" jdbcType="CHAR" />
+    <result column="M015" property="m015" jdbcType="CHAR" />
+    <result column="M016" property="m016" jdbcType="CHAR" />
+    <result column="M017" property="m017" jdbcType="CHAR" />
+    <result column="M018" property="m018" jdbcType="CHAR" />
+    <result column="M019" property="m019" jdbcType="CHAR" />
+    <result column="M020" property="m020" jdbcType="CHAR" />
+    <result column="M021" property="m021" jdbcType="VARCHAR" />
+    <result column="M022" property="m022" jdbcType="VARCHAR" />
+    <result column="M023" property="m023" jdbcType="VARCHAR" />
+    <result column="M024" property="m024" jdbcType="VARCHAR" />
+    <result column="M025" property="m025" jdbcType="VARCHAR" />
+    <result column="M026" property="m026" jdbcType="VARCHAR" />
+    <result column="M027" property="m027" jdbcType="VARCHAR" />
+    <result column="M028" property="m028" jdbcType="VARCHAR" />
+    <result column="M029" property="m029" jdbcType="VARCHAR" />
+    <result column="M030" property="m030" jdbcType="VARCHAR" />
+    <result column="M031" property="m031" jdbcType="VARCHAR" />
+    <result column="M032" property="m032" jdbcType="VARCHAR" />
+    <result column="M033" property="m033" jdbcType="VARCHAR" />
+    <result column="M034" property="m034" jdbcType="VARCHAR" />
+    <result column="M035" property="m035" jdbcType="VARCHAR" />
+    <result column="M036" property="m036" jdbcType="VARCHAR" />
+    <result column="M037" property="m037" jdbcType="VARCHAR" />
+    <result column="M038" property="m038" jdbcType="VARCHAR" />
+    <result column="M039" property="m039" jdbcType="VARCHAR" />
+    <result column="M040" property="m040" jdbcType="VARCHAR" />
+    <result column="M041" property="m041" jdbcType="VARCHAR" />
+    <result column="M042" property="m042" jdbcType="VARCHAR" />
+    <result column="M043" property="m043" jdbcType="VARCHAR" />
+    <result column="M044" property="m044" jdbcType="VARCHAR" />
+    <result column="M045" property="m045" jdbcType="VARCHAR" />
+    <result column="M046" property="m046" jdbcType="VARCHAR" />
+    <result column="M047" property="m047" jdbcType="VARCHAR" />
+    <result column="M048" property="m048" jdbcType="VARCHAR" />
+    <result column="M049" property="m049" jdbcType="VARCHAR" />
+    <result column="M050" property="m050" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    M001, M002, M003, M004, M005, M006, M007, M008, M009, M010, M011, M012, M013, M014, 
+    M015, M016, M017, M018, M019, M020, M021, M022, M023, M024, M025, M026, M027, M028, 
+    M029, M030, M031, M032, M033, M034, M035, M036, M037, M038, M039, M040, M041, M042, 
+    M043, M044, M045, M046, M047, M048, M049, M050
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.entity.MachineExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from MACHINE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from MACHINE
+    where M001 = #{m001,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from MACHINE
+    where M001 = #{m001,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.entity.MachineExample" >
+    delete from MACHINE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Machine" >
+    insert into MACHINE (M001, M002, M003, M004, 
+      M005, M006, M007, M008, 
+      M009, M010, M011, M012, 
+      M013, M014, M015, M016, 
+      M017, M018, M019, M020, 
+      M021, M022, M023, M024, 
+      M025, M026, M027, M028, 
+      M029, M030, M031, M032, 
+      M033, M034, M035, M036, 
+      M037, M038, M039, M040, 
+      M041, M042, M043, M044, 
+      M045, M046, M047, M048, 
+      M049, M050)
+    values (#{m001,jdbcType=CHAR}, #{m002,jdbcType=CHAR}, #{m003,jdbcType=CHAR}, #{m004,jdbcType=CHAR}, 
+      #{m005,jdbcType=CHAR}, #{m006,jdbcType=CHAR}, #{m007,jdbcType=CHAR}, #{m008,jdbcType=CHAR}, 
+      #{m009,jdbcType=CHAR}, #{m010,jdbcType=CHAR}, #{m011,jdbcType=CHAR}, #{m012,jdbcType=CHAR}, 
+      #{m013,jdbcType=CHAR}, #{m014,jdbcType=CHAR}, #{m015,jdbcType=CHAR}, #{m016,jdbcType=CHAR}, 
+      #{m017,jdbcType=CHAR}, #{m018,jdbcType=CHAR}, #{m019,jdbcType=CHAR}, #{m020,jdbcType=CHAR}, 
+      #{m021,jdbcType=VARCHAR}, #{m022,jdbcType=VARCHAR}, #{m023,jdbcType=VARCHAR}, #{m024,jdbcType=VARCHAR}, 
+      #{m025,jdbcType=VARCHAR}, #{m026,jdbcType=VARCHAR}, #{m027,jdbcType=VARCHAR}, #{m028,jdbcType=VARCHAR}, 
+      #{m029,jdbcType=VARCHAR}, #{m030,jdbcType=VARCHAR}, #{m031,jdbcType=VARCHAR}, #{m032,jdbcType=VARCHAR}, 
+      #{m033,jdbcType=VARCHAR}, #{m034,jdbcType=VARCHAR}, #{m035,jdbcType=VARCHAR}, #{m036,jdbcType=VARCHAR}, 
+      #{m037,jdbcType=VARCHAR}, #{m038,jdbcType=VARCHAR}, #{m039,jdbcType=VARCHAR}, #{m040,jdbcType=VARCHAR}, 
+      #{m041,jdbcType=VARCHAR}, #{m042,jdbcType=VARCHAR}, #{m043,jdbcType=VARCHAR}, #{m044,jdbcType=VARCHAR}, 
+      #{m045,jdbcType=VARCHAR}, #{m046,jdbcType=VARCHAR}, #{m047,jdbcType=VARCHAR}, #{m048,jdbcType=VARCHAR}, 
+      #{m049,jdbcType=VARCHAR}, #{m050,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.Machine" >
+    insert into MACHINE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="m001 != null" >
+        M001,
+      </if>
+      <if test="m002 != null" >
+        M002,
+      </if>
+      <if test="m003 != null" >
+        M003,
+      </if>
+      <if test="m004 != null" >
+        M004,
+      </if>
+      <if test="m005 != null" >
+        M005,
+      </if>
+      <if test="m006 != null" >
+        M006,
+      </if>
+      <if test="m007 != null" >
+        M007,
+      </if>
+      <if test="m008 != null" >
+        M008,
+      </if>
+      <if test="m009 != null" >
+        M009,
+      </if>
+      <if test="m010 != null" >
+        M010,
+      </if>
+      <if test="m011 != null" >
+        M011,
+      </if>
+      <if test="m012 != null" >
+        M012,
+      </if>
+      <if test="m013 != null" >
+        M013,
+      </if>
+      <if test="m014 != null" >
+        M014,
+      </if>
+      <if test="m015 != null" >
+        M015,
+      </if>
+      <if test="m016 != null" >
+        M016,
+      </if>
+      <if test="m017 != null" >
+        M017,
+      </if>
+      <if test="m018 != null" >
+        M018,
+      </if>
+      <if test="m019 != null" >
+        M019,
+      </if>
+      <if test="m020 != null" >
+        M020,
+      </if>
+      <if test="m021 != null" >
+        M021,
+      </if>
+      <if test="m022 != null" >
+        M022,
+      </if>
+      <if test="m023 != null" >
+        M023,
+      </if>
+      <if test="m024 != null" >
+        M024,
+      </if>
+      <if test="m025 != null" >
+        M025,
+      </if>
+      <if test="m026 != null" >
+        M026,
+      </if>
+      <if test="m027 != null" >
+        M027,
+      </if>
+      <if test="m028 != null" >
+        M028,
+      </if>
+      <if test="m029 != null" >
+        M029,
+      </if>
+      <if test="m030 != null" >
+        M030,
+      </if>
+      <if test="m031 != null" >
+        M031,
+      </if>
+      <if test="m032 != null" >
+        M032,
+      </if>
+      <if test="m033 != null" >
+        M033,
+      </if>
+      <if test="m034 != null" >
+        M034,
+      </if>
+      <if test="m035 != null" >
+        M035,
+      </if>
+      <if test="m036 != null" >
+        M036,
+      </if>
+      <if test="m037 != null" >
+        M037,
+      </if>
+      <if test="m038 != null" >
+        M038,
+      </if>
+      <if test="m039 != null" >
+        M039,
+      </if>
+      <if test="m040 != null" >
+        M040,
+      </if>
+      <if test="m041 != null" >
+        M041,
+      </if>
+      <if test="m042 != null" >
+        M042,
+      </if>
+      <if test="m043 != null" >
+        M043,
+      </if>
+      <if test="m044 != null" >
+        M044,
+      </if>
+      <if test="m045 != null" >
+        M045,
+      </if>
+      <if test="m046 != null" >
+        M046,
+      </if>
+      <if test="m047 != null" >
+        M047,
+      </if>
+      <if test="m048 != null" >
+        M048,
+      </if>
+      <if test="m049 != null" >
+        M049,
+      </if>
+      <if test="m050 != null" >
+        M050,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="m001 != null" >
+        #{m001,jdbcType=CHAR},
+      </if>
+      <if test="m002 != null" >
+        #{m002,jdbcType=CHAR},
+      </if>
+      <if test="m003 != null" >
+        #{m003,jdbcType=CHAR},
+      </if>
+      <if test="m004 != null" >
+        #{m004,jdbcType=CHAR},
+      </if>
+      <if test="m005 != null" >
+        #{m005,jdbcType=CHAR},
+      </if>
+      <if test="m006 != null" >
+        #{m006,jdbcType=CHAR},
+      </if>
+      <if test="m007 != null" >
+        #{m007,jdbcType=CHAR},
+      </if>
+      <if test="m008 != null" >
+        #{m008,jdbcType=CHAR},
+      </if>
+      <if test="m009 != null" >
+        #{m009,jdbcType=CHAR},
+      </if>
+      <if test="m010 != null" >
+        #{m010,jdbcType=CHAR},
+      </if>
+      <if test="m011 != null" >
+        #{m011,jdbcType=CHAR},
+      </if>
+      <if test="m012 != null" >
+        #{m012,jdbcType=CHAR},
+      </if>
+      <if test="m013 != null" >
+        #{m013,jdbcType=CHAR},
+      </if>
+      <if test="m014 != null" >
+        #{m014,jdbcType=CHAR},
+      </if>
+      <if test="m015 != null" >
+        #{m015,jdbcType=CHAR},
+      </if>
+      <if test="m016 != null" >
+        #{m016,jdbcType=CHAR},
+      </if>
+      <if test="m017 != null" >
+        #{m017,jdbcType=CHAR},
+      </if>
+      <if test="m018 != null" >
+        #{m018,jdbcType=CHAR},
+      </if>
+      <if test="m019 != null" >
+        #{m019,jdbcType=CHAR},
+      </if>
+      <if test="m020 != null" >
+        #{m020,jdbcType=CHAR},
+      </if>
+      <if test="m021 != null" >
+        #{m021,jdbcType=VARCHAR},
+      </if>
+      <if test="m022 != null" >
+        #{m022,jdbcType=VARCHAR},
+      </if>
+      <if test="m023 != null" >
+        #{m023,jdbcType=VARCHAR},
+      </if>
+      <if test="m024 != null" >
+        #{m024,jdbcType=VARCHAR},
+      </if>
+      <if test="m025 != null" >
+        #{m025,jdbcType=VARCHAR},
+      </if>
+      <if test="m026 != null" >
+        #{m026,jdbcType=VARCHAR},
+      </if>
+      <if test="m027 != null" >
+        #{m027,jdbcType=VARCHAR},
+      </if>
+      <if test="m028 != null" >
+        #{m028,jdbcType=VARCHAR},
+      </if>
+      <if test="m029 != null" >
+        #{m029,jdbcType=VARCHAR},
+      </if>
+      <if test="m030 != null" >
+        #{m030,jdbcType=VARCHAR},
+      </if>
+      <if test="m031 != null" >
+        #{m031,jdbcType=VARCHAR},
+      </if>
+      <if test="m032 != null" >
+        #{m032,jdbcType=VARCHAR},
+      </if>
+      <if test="m033 != null" >
+        #{m033,jdbcType=VARCHAR},
+      </if>
+      <if test="m034 != null" >
+        #{m034,jdbcType=VARCHAR},
+      </if>
+      <if test="m035 != null" >
+        #{m035,jdbcType=VARCHAR},
+      </if>
+      <if test="m036 != null" >
+        #{m036,jdbcType=VARCHAR},
+      </if>
+      <if test="m037 != null" >
+        #{m037,jdbcType=VARCHAR},
+      </if>
+      <if test="m038 != null" >
+        #{m038,jdbcType=VARCHAR},
+      </if>
+      <if test="m039 != null" >
+        #{m039,jdbcType=VARCHAR},
+      </if>
+      <if test="m040 != null" >
+        #{m040,jdbcType=VARCHAR},
+      </if>
+      <if test="m041 != null" >
+        #{m041,jdbcType=VARCHAR},
+      </if>
+      <if test="m042 != null" >
+        #{m042,jdbcType=VARCHAR},
+      </if>
+      <if test="m043 != null" >
+        #{m043,jdbcType=VARCHAR},
+      </if>
+      <if test="m044 != null" >
+        #{m044,jdbcType=VARCHAR},
+      </if>
+      <if test="m045 != null" >
+        #{m045,jdbcType=VARCHAR},
+      </if>
+      <if test="m046 != null" >
+        #{m046,jdbcType=VARCHAR},
+      </if>
+      <if test="m047 != null" >
+        #{m047,jdbcType=VARCHAR},
+      </if>
+      <if test="m048 != null" >
+        #{m048,jdbcType=VARCHAR},
+      </if>
+      <if test="m049 != null" >
+        #{m049,jdbcType=VARCHAR},
+      </if>
+      <if test="m050 != null" >
+        #{m050,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.entity.MachineExample" resultType="java.lang.Integer" >
+    select count(*) from MACHINE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update MACHINE
+    <set >
+      <if test="record.m001 != null" >
+        M001 = #{record.m001,jdbcType=CHAR},
+      </if>
+      <if test="record.m002 != null" >
+        M002 = #{record.m002,jdbcType=CHAR},
+      </if>
+      <if test="record.m003 != null" >
+        M003 = #{record.m003,jdbcType=CHAR},
+      </if>
+      <if test="record.m004 != null" >
+        M004 = #{record.m004,jdbcType=CHAR},
+      </if>
+      <if test="record.m005 != null" >
+        M005 = #{record.m005,jdbcType=CHAR},
+      </if>
+      <if test="record.m006 != null" >
+        M006 = #{record.m006,jdbcType=CHAR},
+      </if>
+      <if test="record.m007 != null" >
+        M007 = #{record.m007,jdbcType=CHAR},
+      </if>
+      <if test="record.m008 != null" >
+        M008 = #{record.m008,jdbcType=CHAR},
+      </if>
+      <if test="record.m009 != null" >
+        M009 = #{record.m009,jdbcType=CHAR},
+      </if>
+      <if test="record.m010 != null" >
+        M010 = #{record.m010,jdbcType=CHAR},
+      </if>
+      <if test="record.m011 != null" >
+        M011 = #{record.m011,jdbcType=CHAR},
+      </if>
+      <if test="record.m012 != null" >
+        M012 = #{record.m012,jdbcType=CHAR},
+      </if>
+      <if test="record.m013 != null" >
+        M013 = #{record.m013,jdbcType=CHAR},
+      </if>
+      <if test="record.m014 != null" >
+        M014 = #{record.m014,jdbcType=CHAR},
+      </if>
+      <if test="record.m015 != null" >
+        M015 = #{record.m015,jdbcType=CHAR},
+      </if>
+      <if test="record.m016 != null" >
+        M016 = #{record.m016,jdbcType=CHAR},
+      </if>
+      <if test="record.m017 != null" >
+        M017 = #{record.m017,jdbcType=CHAR},
+      </if>
+      <if test="record.m018 != null" >
+        M018 = #{record.m018,jdbcType=CHAR},
+      </if>
+      <if test="record.m019 != null" >
+        M019 = #{record.m019,jdbcType=CHAR},
+      </if>
+      <if test="record.m020 != null" >
+        M020 = #{record.m020,jdbcType=CHAR},
+      </if>
+      <if test="record.m021 != null" >
+        M021 = #{record.m021,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m022 != null" >
+        M022 = #{record.m022,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m023 != null" >
+        M023 = #{record.m023,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m024 != null" >
+        M024 = #{record.m024,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m025 != null" >
+        M025 = #{record.m025,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m026 != null" >
+        M026 = #{record.m026,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m027 != null" >
+        M027 = #{record.m027,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m028 != null" >
+        M028 = #{record.m028,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m029 != null" >
+        M029 = #{record.m029,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m030 != null" >
+        M030 = #{record.m030,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m031 != null" >
+        M031 = #{record.m031,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m032 != null" >
+        M032 = #{record.m032,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m033 != null" >
+        M033 = #{record.m033,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m034 != null" >
+        M034 = #{record.m034,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m035 != null" >
+        M035 = #{record.m035,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m036 != null" >
+        M036 = #{record.m036,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m037 != null" >
+        M037 = #{record.m037,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m038 != null" >
+        M038 = #{record.m038,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m039 != null" >
+        M039 = #{record.m039,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m040 != null" >
+        M040 = #{record.m040,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m041 != null" >
+        M041 = #{record.m041,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m042 != null" >
+        M042 = #{record.m042,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m043 != null" >
+        M043 = #{record.m043,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m044 != null" >
+        M044 = #{record.m044,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m045 != null" >
+        M045 = #{record.m045,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m046 != null" >
+        M046 = #{record.m046,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m047 != null" >
+        M047 = #{record.m047,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m048 != null" >
+        M048 = #{record.m048,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m049 != null" >
+        M049 = #{record.m049,jdbcType=VARCHAR},
+      </if>
+      <if test="record.m050 != null" >
+        M050 = #{record.m050,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update MACHINE
+    set M001 = #{record.m001,jdbcType=CHAR},
+      M002 = #{record.m002,jdbcType=CHAR},
+      M003 = #{record.m003,jdbcType=CHAR},
+      M004 = #{record.m004,jdbcType=CHAR},
+      M005 = #{record.m005,jdbcType=CHAR},
+      M006 = #{record.m006,jdbcType=CHAR},
+      M007 = #{record.m007,jdbcType=CHAR},
+      M008 = #{record.m008,jdbcType=CHAR},
+      M009 = #{record.m009,jdbcType=CHAR},
+      M010 = #{record.m010,jdbcType=CHAR},
+      M011 = #{record.m011,jdbcType=CHAR},
+      M012 = #{record.m012,jdbcType=CHAR},
+      M013 = #{record.m013,jdbcType=CHAR},
+      M014 = #{record.m014,jdbcType=CHAR},
+      M015 = #{record.m015,jdbcType=CHAR},
+      M016 = #{record.m016,jdbcType=CHAR},
+      M017 = #{record.m017,jdbcType=CHAR},
+      M018 = #{record.m018,jdbcType=CHAR},
+      M019 = #{record.m019,jdbcType=CHAR},
+      M020 = #{record.m020,jdbcType=CHAR},
+      M021 = #{record.m021,jdbcType=VARCHAR},
+      M022 = #{record.m022,jdbcType=VARCHAR},
+      M023 = #{record.m023,jdbcType=VARCHAR},
+      M024 = #{record.m024,jdbcType=VARCHAR},
+      M025 = #{record.m025,jdbcType=VARCHAR},
+      M026 = #{record.m026,jdbcType=VARCHAR},
+      M027 = #{record.m027,jdbcType=VARCHAR},
+      M028 = #{record.m028,jdbcType=VARCHAR},
+      M029 = #{record.m029,jdbcType=VARCHAR},
+      M030 = #{record.m030,jdbcType=VARCHAR},
+      M031 = #{record.m031,jdbcType=VARCHAR},
+      M032 = #{record.m032,jdbcType=VARCHAR},
+      M033 = #{record.m033,jdbcType=VARCHAR},
+      M034 = #{record.m034,jdbcType=VARCHAR},
+      M035 = #{record.m035,jdbcType=VARCHAR},
+      M036 = #{record.m036,jdbcType=VARCHAR},
+      M037 = #{record.m037,jdbcType=VARCHAR},
+      M038 = #{record.m038,jdbcType=VARCHAR},
+      M039 = #{record.m039,jdbcType=VARCHAR},
+      M040 = #{record.m040,jdbcType=VARCHAR},
+      M041 = #{record.m041,jdbcType=VARCHAR},
+      M042 = #{record.m042,jdbcType=VARCHAR},
+      M043 = #{record.m043,jdbcType=VARCHAR},
+      M044 = #{record.m044,jdbcType=VARCHAR},
+      M045 = #{record.m045,jdbcType=VARCHAR},
+      M046 = #{record.m046,jdbcType=VARCHAR},
+      M047 = #{record.m047,jdbcType=VARCHAR},
+      M048 = #{record.m048,jdbcType=VARCHAR},
+      M049 = #{record.m049,jdbcType=VARCHAR},
+      M050 = #{record.m050,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Machine" >
+    update MACHINE
+    <set >
+      <if test="m002 != null" >
+        M002 = #{m002,jdbcType=CHAR},
+      </if>
+      <if test="m003 != null" >
+        M003 = #{m003,jdbcType=CHAR},
+      </if>
+      <if test="m004 != null" >
+        M004 = #{m004,jdbcType=CHAR},
+      </if>
+      <if test="m005 != null" >
+        M005 = #{m005,jdbcType=CHAR},
+      </if>
+      <if test="m006 != null" >
+        M006 = #{m006,jdbcType=CHAR},
+      </if>
+      <if test="m007 != null" >
+        M007 = #{m007,jdbcType=CHAR},
+      </if>
+      <if test="m008 != null" >
+        M008 = #{m008,jdbcType=CHAR},
+      </if>
+      <if test="m009 != null" >
+        M009 = #{m009,jdbcType=CHAR},
+      </if>
+      <if test="m010 != null" >
+        M010 = #{m010,jdbcType=CHAR},
+      </if>
+      <if test="m011 != null" >
+        M011 = #{m011,jdbcType=CHAR},
+      </if>
+      <if test="m012 != null" >
+        M012 = #{m012,jdbcType=CHAR},
+      </if>
+      <if test="m013 != null" >
+        M013 = #{m013,jdbcType=CHAR},
+      </if>
+      <if test="m014 != null" >
+        M014 = #{m014,jdbcType=CHAR},
+      </if>
+      <if test="m015 != null" >
+        M015 = #{m015,jdbcType=CHAR},
+      </if>
+      <if test="m016 != null" >
+        M016 = #{m016,jdbcType=CHAR},
+      </if>
+      <if test="m017 != null" >
+        M017 = #{m017,jdbcType=CHAR},
+      </if>
+      <if test="m018 != null" >
+        M018 = #{m018,jdbcType=CHAR},
+      </if>
+      <if test="m019 != null" >
+        M019 = #{m019,jdbcType=CHAR},
+      </if>
+      <if test="m020 != null" >
+        M020 = #{m020,jdbcType=CHAR},
+      </if>
+      <if test="m021 != null" >
+        M021 = #{m021,jdbcType=VARCHAR},
+      </if>
+      <if test="m022 != null" >
+        M022 = #{m022,jdbcType=VARCHAR},
+      </if>
+      <if test="m023 != null" >
+        M023 = #{m023,jdbcType=VARCHAR},
+      </if>
+      <if test="m024 != null" >
+        M024 = #{m024,jdbcType=VARCHAR},
+      </if>
+      <if test="m025 != null" >
+        M025 = #{m025,jdbcType=VARCHAR},
+      </if>
+      <if test="m026 != null" >
+        M026 = #{m026,jdbcType=VARCHAR},
+      </if>
+      <if test="m027 != null" >
+        M027 = #{m027,jdbcType=VARCHAR},
+      </if>
+      <if test="m028 != null" >
+        M028 = #{m028,jdbcType=VARCHAR},
+      </if>
+      <if test="m029 != null" >
+        M029 = #{m029,jdbcType=VARCHAR},
+      </if>
+      <if test="m030 != null" >
+        M030 = #{m030,jdbcType=VARCHAR},
+      </if>
+      <if test="m031 != null" >
+        M031 = #{m031,jdbcType=VARCHAR},
+      </if>
+      <if test="m032 != null" >
+        M032 = #{m032,jdbcType=VARCHAR},
+      </if>
+      <if test="m033 != null" >
+        M033 = #{m033,jdbcType=VARCHAR},
+      </if>
+      <if test="m034 != null" >
+        M034 = #{m034,jdbcType=VARCHAR},
+      </if>
+      <if test="m035 != null" >
+        M035 = #{m035,jdbcType=VARCHAR},
+      </if>
+      <if test="m036 != null" >
+        M036 = #{m036,jdbcType=VARCHAR},
+      </if>
+      <if test="m037 != null" >
+        M037 = #{m037,jdbcType=VARCHAR},
+      </if>
+      <if test="m038 != null" >
+        M038 = #{m038,jdbcType=VARCHAR},
+      </if>
+      <if test="m039 != null" >
+        M039 = #{m039,jdbcType=VARCHAR},
+      </if>
+      <if test="m040 != null" >
+        M040 = #{m040,jdbcType=VARCHAR},
+      </if>
+      <if test="m041 != null" >
+        M041 = #{m041,jdbcType=VARCHAR},
+      </if>
+      <if test="m042 != null" >
+        M042 = #{m042,jdbcType=VARCHAR},
+      </if>
+      <if test="m043 != null" >
+        M043 = #{m043,jdbcType=VARCHAR},
+      </if>
+      <if test="m044 != null" >
+        M044 = #{m044,jdbcType=VARCHAR},
+      </if>
+      <if test="m045 != null" >
+        M045 = #{m045,jdbcType=VARCHAR},
+      </if>
+      <if test="m046 != null" >
+        M046 = #{m046,jdbcType=VARCHAR},
+      </if>
+      <if test="m047 != null" >
+        M047 = #{m047,jdbcType=VARCHAR},
+      </if>
+      <if test="m048 != null" >
+        M048 = #{m048,jdbcType=VARCHAR},
+      </if>
+      <if test="m049 != null" >
+        M049 = #{m049,jdbcType=VARCHAR},
+      </if>
+      <if test="m050 != null" >
+        M050 = #{m050,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where M001 = #{m001,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Machine" >
+    update MACHINE
+    set M002 = #{m002,jdbcType=CHAR},
+      M003 = #{m003,jdbcType=CHAR},
+      M004 = #{m004,jdbcType=CHAR},
+      M005 = #{m005,jdbcType=CHAR},
+      M006 = #{m006,jdbcType=CHAR},
+      M007 = #{m007,jdbcType=CHAR},
+      M008 = #{m008,jdbcType=CHAR},
+      M009 = #{m009,jdbcType=CHAR},
+      M010 = #{m010,jdbcType=CHAR},
+      M011 = #{m011,jdbcType=CHAR},
+      M012 = #{m012,jdbcType=CHAR},
+      M013 = #{m013,jdbcType=CHAR},
+      M014 = #{m014,jdbcType=CHAR},
+      M015 = #{m015,jdbcType=CHAR},
+      M016 = #{m016,jdbcType=CHAR},
+      M017 = #{m017,jdbcType=CHAR},
+      M018 = #{m018,jdbcType=CHAR},
+      M019 = #{m019,jdbcType=CHAR},
+      M020 = #{m020,jdbcType=CHAR},
+      M021 = #{m021,jdbcType=VARCHAR},
+      M022 = #{m022,jdbcType=VARCHAR},
+      M023 = #{m023,jdbcType=VARCHAR},
+      M024 = #{m024,jdbcType=VARCHAR},
+      M025 = #{m025,jdbcType=VARCHAR},
+      M026 = #{m026,jdbcType=VARCHAR},
+      M027 = #{m027,jdbcType=VARCHAR},
+      M028 = #{m028,jdbcType=VARCHAR},
+      M029 = #{m029,jdbcType=VARCHAR},
+      M030 = #{m030,jdbcType=VARCHAR},
+      M031 = #{m031,jdbcType=VARCHAR},
+      M032 = #{m032,jdbcType=VARCHAR},
+      M033 = #{m033,jdbcType=VARCHAR},
+      M034 = #{m034,jdbcType=VARCHAR},
+      M035 = #{m035,jdbcType=VARCHAR},
+      M036 = #{m036,jdbcType=VARCHAR},
+      M037 = #{m037,jdbcType=VARCHAR},
+      M038 = #{m038,jdbcType=VARCHAR},
+      M039 = #{m039,jdbcType=VARCHAR},
+      M040 = #{m040,jdbcType=VARCHAR},
+      M041 = #{m041,jdbcType=VARCHAR},
+      M042 = #{m042,jdbcType=VARCHAR},
+      M043 = #{m043,jdbcType=VARCHAR},
+      M044 = #{m044,jdbcType=VARCHAR},
+      M045 = #{m045,jdbcType=VARCHAR},
+      M046 = #{m046,jdbcType=VARCHAR},
+      M047 = #{m047,jdbcType=VARCHAR},
+      M048 = #{m048,jdbcType=VARCHAR},
+      M049 = #{m049,jdbcType=VARCHAR},
+      M050 = #{m050,jdbcType=VARCHAR}
+    where M001 = #{m001,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="/css/bootstrap.css"/>
+		<title>Title</title>
+		<style type="text/css">
+			#loginDiv{
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				border-radius: 3%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--自定义登录页面，如果想要用内存中的用户，想security，自己帮我们校验的话，则提交地址必须是 /login -->
+		<p style="color:red;" th:text="${session.msg}"></p>
+		<div id="loginDiv" style="width: 90%;margin-left: 5%;margin-top: 20%;padding-bottom: 4%;padding-top: 2%;">
+			<form class="form-signin" method="post" action="/login">
+				<h3 class="form-signin-heading" style="margin-left: 25%;">自助报修</h3>
+				<div class="input-group" style="width: 80%;margin-left: 10%;margin-top: 1%;">
+					<span for="username" class="input-group-addon">账号</span>
+					<!-- 这里的 username，password 也不能改动，因为security帮我们校验的时候，就是用它来接受参数的-->
+					<input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="" />
+				</div>
+				<div class="input-group" style="width: 80%;margin-top: 3%;margin-left: 10%;">
+					<span for="password" class="input-group-addon">密码</span>
+					<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="" />
+				</div>
+				<!--<input type="checkbox" name="remeber"> 记住我<br/>-->
+				<!-- 本来官网上给出这个东西的，但是不知道，为啥不会获取到对应的值，因此在上面配置的时候，直接关闭 csrf  -->
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<button class="btn btn-danger" type="submit" style="margin-left: 40%;margin-top: 3%;">登录</button>
+			</form>
+		</div>
+	</body>
+</html>

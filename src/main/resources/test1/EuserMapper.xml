@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.mapperdao1.EuserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Euser" >
+    <id column="U001" property="u001" jdbcType="CHAR" />
+    <result column="U002" property="u002" jdbcType="CHAR" />
+    <result column="U003" property="u003" jdbcType="CHAR" />
+    <result column="U004" property="u004" jdbcType="CHAR" />
+    <result column="U005" property="u005" jdbcType="CHAR" />
+    <result column="U006" property="u006" jdbcType="NCHAR" />
+    <result column="U007" property="u007" jdbcType="NCHAR" />
+    <result column="U008" property="u008" jdbcType="NCHAR" />
+    <result column="U009" property="u009" jdbcType="NCHAR" />
+    <result column="U0010" property="u0010" jdbcType="NCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    U001, U002, U003, U004, U005, U006, U007, U008, U009, U0010
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.entity.EuserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from EUSER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from EUSER
+    where U001 = #{u001,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from EUSER
+    where U001 = #{u001,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.entity.EuserExample" >
+    delete from EUSER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Euser" >
+    insert into EUSER (U001, U002, U003, U004, 
+      U005, U006, U007, U008, 
+      U009, U0010)
+    values (#{u001,jdbcType=CHAR}, #{u002,jdbcType=CHAR}, #{u003,jdbcType=CHAR}, #{u004,jdbcType=CHAR}, 
+      #{u005,jdbcType=CHAR}, #{u006,jdbcType=NCHAR}, #{u007,jdbcType=NCHAR}, #{u008,jdbcType=NCHAR}, 
+      #{u009,jdbcType=NCHAR}, #{u0010,jdbcType=NCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.Euser" >
+    insert into EUSER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="u001 != null" >
+        U001,
+      </if>
+      <if test="u002 != null" >
+        U002,
+      </if>
+      <if test="u003 != null" >
+        U003,
+      </if>
+      <if test="u004 != null" >
+        U004,
+      </if>
+      <if test="u005 != null" >
+        U005,
+      </if>
+      <if test="u006 != null" >
+        U006,
+      </if>
+      <if test="u007 != null" >
+        U007,
+      </if>
+      <if test="u008 != null" >
+        U008,
+      </if>
+      <if test="u009 != null" >
+        U009,
+      </if>
+      <if test="u0010 != null" >
+        U0010,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="u001 != null" >
+        #{u001,jdbcType=CHAR},
+      </if>
+      <if test="u002 != null" >
+        #{u002,jdbcType=CHAR},
+      </if>
+      <if test="u003 != null" >
+        #{u003,jdbcType=CHAR},
+      </if>
+      <if test="u004 != null" >
+        #{u004,jdbcType=CHAR},
+      </if>
+      <if test="u005 != null" >
+        #{u005,jdbcType=CHAR},
+      </if>
+      <if test="u006 != null" >
+        #{u006,jdbcType=NCHAR},
+      </if>
+      <if test="u007 != null" >
+        #{u007,jdbcType=NCHAR},
+      </if>
+      <if test="u008 != null" >
+        #{u008,jdbcType=NCHAR},
+      </if>
+      <if test="u009 != null" >
+        #{u009,jdbcType=NCHAR},
+      </if>
+      <if test="u0010 != null" >
+        #{u0010,jdbcType=NCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.entity.EuserExample" resultType="java.lang.Integer" >
+    select count(*) from EUSER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update EUSER
+    <set >
+      <if test="record.u001 != null" >
+        U001 = #{record.u001,jdbcType=CHAR},
+      </if>
+      <if test="record.u002 != null" >
+        U002 = #{record.u002,jdbcType=CHAR},
+      </if>
+      <if test="record.u003 != null" >
+        U003 = #{record.u003,jdbcType=CHAR},
+      </if>
+      <if test="record.u004 != null" >
+        U004 = #{record.u004,jdbcType=CHAR},
+      </if>
+      <if test="record.u005 != null" >
+        U005 = #{record.u005,jdbcType=CHAR},
+      </if>
+      <if test="record.u006 != null" >
+        U006 = #{record.u006,jdbcType=NCHAR},
+      </if>
+      <if test="record.u007 != null" >
+        U007 = #{record.u007,jdbcType=NCHAR},
+      </if>
+      <if test="record.u008 != null" >
+        U008 = #{record.u008,jdbcType=NCHAR},
+      </if>
+      <if test="record.u009 != null" >
+        U009 = #{record.u009,jdbcType=NCHAR},
+      </if>
+      <if test="record.u0010 != null" >
+        U0010 = #{record.u0010,jdbcType=NCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update EUSER
+    set U001 = #{record.u001,jdbcType=CHAR},
+      U002 = #{record.u002,jdbcType=CHAR},
+      U003 = #{record.u003,jdbcType=CHAR},
+      U004 = #{record.u004,jdbcType=CHAR},
+      U005 = #{record.u005,jdbcType=CHAR},
+      U006 = #{record.u006,jdbcType=NCHAR},
+      U007 = #{record.u007,jdbcType=NCHAR},
+      U008 = #{record.u008,jdbcType=NCHAR},
+      U009 = #{record.u009,jdbcType=NCHAR},
+      U0010 = #{record.u0010,jdbcType=NCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Euser" >
+    update EUSER
+    <set >
+      <if test="u002 != null" >
+        U002 = #{u002,jdbcType=CHAR},
+      </if>
+      <if test="u003 != null" >
+        U003 = #{u003,jdbcType=CHAR},
+      </if>
+      <if test="u004 != null" >
+        U004 = #{u004,jdbcType=CHAR},
+      </if>
+      <if test="u005 != null" >
+        U005 = #{u005,jdbcType=CHAR},
+      </if>
+      <if test="u006 != null" >
+        U006 = #{u006,jdbcType=NCHAR},
+      </if>
+      <if test="u007 != null" >
+        U007 = #{u007,jdbcType=NCHAR},
+      </if>
+      <if test="u008 != null" >
+        U008 = #{u008,jdbcType=NCHAR},
+      </if>
+      <if test="u009 != null" >
+        U009 = #{u009,jdbcType=NCHAR},
+      </if>
+      <if test="u0010 != null" >
+        U0010 = #{u0010,jdbcType=NCHAR},
+      </if>
+    </set>
+    where U001 = #{u001,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Euser" >
+    update EUSER
+    set U002 = #{u002,jdbcType=CHAR},
+      U003 = #{u003,jdbcType=CHAR},
+      U004 = #{u004,jdbcType=CHAR},
+      U005 = #{u005,jdbcType=CHAR},
+      U006 = #{u006,jdbcType=NCHAR},
+      U007 = #{u007,jdbcType=NCHAR},
+      U008 = #{u008,jdbcType=NCHAR},
+      U009 = #{u009,jdbcType=NCHAR},
+      U0010 = #{u0010,jdbcType=NCHAR}
+    where U001 = #{u001,jdbcType=CHAR}
+  </update>
+</mapper>

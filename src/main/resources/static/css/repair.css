@@ -1,0 +1,75 @@
+@charset "utf-8";
+#mainDIV {}
+
+#first {
+	padding-top: 3%;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 98%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 3%;
+
+}
+
+#first-span {
+	text-align: center;
+}
+
+#first-lable-title {
+	margin-left: 2%;
+}
+
+#second {
+	margin-top: 4%;
+	width: 98%;
+	margin-left: 1%;
+	margin-right: 1%;
+	padding-bottom: 2%;
+	border-radius: 7px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#second label {
+	margin-left: 1%;
+	margin-top: 2%;
+}
+
+#third {
+	margin-left: 1%;
+	margin-top: 4%;
+	padding-bottom: 2%;
+	width: 98%;
+	border-radius: 7px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#fourth{
+	margin-left: 1%;
+	margin-top: 2%;
+	padding-bottom: 2%;
+	width: 98%;
+	border-radius: 7px;
+	margin-bottom: 3%;
+}
+#subBtn{
+	width: 100%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#uploadImage{
+	margin-left: 2%;
+	margin-top: 2%;
+}
+#uploadVideo{
+	margin-left: 2%;
+	margin-top: 3%;
+}
+table {
+	width: 100%;
+	
+
+}
+
+table tr td{
+	font-weight: bolder;
+}
+

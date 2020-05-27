@@ -1,0 +1,84 @@
+server:
+  servlet:
+#    context-path: /client
+    session:
+      timeout: PT24H
+  port: 8091
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    test1:
+       jdbc-url: jdbc:sqlserver://10.168.18.208;DatabaseName=client
+#       url: jdbc:sqlserver://192.168.0.7;DatabaseName=lstest
+       username: root
+       password: root
+       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+#  datasource:
+    test2:
+      jdbc-url: jdbc:sqlserver://192.168.0.7;DatabaseName=LSJX
+#       url: jdbc:sqlserver://192.168.0.7;DatabaseName=lstest
+      username: sa
+      password: maji834
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+
+
+  #redis配置
+  redis:
+      database: 0
+      host: 10.168.18.208
+      port: 6379
+      lettuce:
+        pool:
+          max-active: 100 #连接池最大连接数（负值表示没有限制）
+          max-wait: 3000 #连接池最大阻塞等待时间（负值表示没有限制）
+          max-idle: 200 #连接池最大空闭连接数
+          min-idle: 50 #连接汉最小空闲连接数
+          timeout: 600 #连接超时时间（毫秒）
+
+
+#session过期时间，单位：秒
+  cache:
+    redis:
+      defaultlocale: zh_CN
+      session:
+        backend:
+           expiretime: 300
+        frontend:
+           expiretime: 3600
+  # thymeleaf配置
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    content-type: text/html
+    mode: HTML5
+    cache: false
+
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  session:
+    store-type: none
+    redis:
+      namespace: evidence
+
+#mybatis:
+#  mapper-locations: classpath:test1/*.xml
+#  type-aliases-package: com.example.demo.entity
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        demo:
+          dao :
+            mapperdao1: debug
+            mapperdao2: debug

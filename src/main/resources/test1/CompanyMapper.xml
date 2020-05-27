@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.mapperdao1.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Company" >
+    <id column="C001" property="c001" jdbcType="CHAR" />
+    <result column="C002" property="c002" jdbcType="CHAR" />
+    <result column="C003" property="c003" jdbcType="CHAR" />
+    <result column="C004" property="c004" jdbcType="CHAR" />
+    <result column="C005" property="c005" jdbcType="CHAR" />
+    <result column="C006" property="c006" jdbcType="NCHAR" />
+    <result column="C007" property="c007" jdbcType="NCHAR" />
+    <result column="C008" property="c008" jdbcType="NCHAR" />
+    <result column="C009" property="c009" jdbcType="NCHAR" />
+    <result column="C010" property="c010" jdbcType="NCHAR" />
+    <result column="C011" property="c011" jdbcType="NCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.entity.CompanyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from COMPANY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from COMPANY
+    where C001 = #{c001,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from COMPANY
+    where C001 = #{c001,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.entity.CompanyExample" >
+    delete from COMPANY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Company" >
+    insert into COMPANY (C001, C002, C003, C004, 
+      C005, C006, C007, C008, 
+      C009, C010, C011)
+    values (#{c001,jdbcType=CHAR}, #{c002,jdbcType=CHAR}, #{c003,jdbcType=CHAR}, #{c004,jdbcType=CHAR}, 
+      #{c005,jdbcType=CHAR}, #{c006,jdbcType=NCHAR}, #{c007,jdbcType=NCHAR}, #{c008,jdbcType=NCHAR}, 
+      #{c009,jdbcType=NCHAR}, #{c010,jdbcType=NCHAR}, #{c011,jdbcType=NCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.Company" >
+    insert into COMPANY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="c001 != null" >
+        C001,
+      </if>
+      <if test="c002 != null" >
+        C002,
+      </if>
+      <if test="c003 != null" >
+        C003,
+      </if>
+      <if test="c004 != null" >
+        C004,
+      </if>
+      <if test="c005 != null" >
+        C005,
+      </if>
+      <if test="c006 != null" >
+        C006,
+      </if>
+      <if test="c007 != null" >
+        C007,
+      </if>
+      <if test="c008 != null" >
+        C008,
+      </if>
+      <if test="c009 != null" >
+        C009,
+      </if>
+      <if test="c010 != null" >
+        C010,
+      </if>
+      <if test="c011 != null" >
+        C011,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="c001 != null" >
+        #{c001,jdbcType=CHAR},
+      </if>
+      <if test="c002 != null" >
+        #{c002,jdbcType=CHAR},
+      </if>
+      <if test="c003 != null" >
+        #{c003,jdbcType=CHAR},
+      </if>
+      <if test="c004 != null" >
+        #{c004,jdbcType=CHAR},
+      </if>
+      <if test="c005 != null" >
+        #{c005,jdbcType=CHAR},
+      </if>
+      <if test="c006 != null" >
+        #{c006,jdbcType=NCHAR},
+      </if>
+      <if test="c007 != null" >
+        #{c007,jdbcType=NCHAR},
+      </if>
+      <if test="c008 != null" >
+        #{c008,jdbcType=NCHAR},
+      </if>
+      <if test="c009 != null" >
+        #{c009,jdbcType=NCHAR},
+      </if>
+      <if test="c010 != null" >
+        #{c010,jdbcType=NCHAR},
+      </if>
+      <if test="c011 != null" >
+        #{c011,jdbcType=NCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.entity.CompanyExample" resultType="java.lang.Integer" >
+    select count(*) from COMPANY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update COMPANY
+    <set >
+      <if test="record.c001 != null" >
+        C001 = #{record.c001,jdbcType=CHAR},
+      </if>
+      <if test="record.c002 != null" >
+        C002 = #{record.c002,jdbcType=CHAR},
+      </if>
+      <if test="record.c003 != null" >
+        C003 = #{record.c003,jdbcType=CHAR},
+      </if>
+      <if test="record.c004 != null" >
+        C004 = #{record.c004,jdbcType=CHAR},
+      </if>
+      <if test="record.c005 != null" >
+        C005 = #{record.c005,jdbcType=CHAR},
+      </if>
+      <if test="record.c006 != null" >
+        C006 = #{record.c006,jdbcType=NCHAR},
+      </if>
+      <if test="record.c007 != null" >
+        C007 = #{record.c007,jdbcType=NCHAR},
+      </if>
+      <if test="record.c008 != null" >
+        C008 = #{record.c008,jdbcType=NCHAR},
+      </if>
+      <if test="record.c009 != null" >
+        C009 = #{record.c009,jdbcType=NCHAR},
+      </if>
+      <if test="record.c010 != null" >
+        C010 = #{record.c010,jdbcType=NCHAR},
+      </if>
+      <if test="record.c011 != null" >
+        C011 = #{record.c011,jdbcType=NCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update COMPANY
+    set C001 = #{record.c001,jdbcType=CHAR},
+      C002 = #{record.c002,jdbcType=CHAR},
+      C003 = #{record.c003,jdbcType=CHAR},
+      C004 = #{record.c004,jdbcType=CHAR},
+      C005 = #{record.c005,jdbcType=CHAR},
+      C006 = #{record.c006,jdbcType=NCHAR},
+      C007 = #{record.c007,jdbcType=NCHAR},
+      C008 = #{record.c008,jdbcType=NCHAR},
+      C009 = #{record.c009,jdbcType=NCHAR},
+      C010 = #{record.c010,jdbcType=NCHAR},
+      C011 = #{record.c011,jdbcType=NCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Company" >
+    update COMPANY
+    <set >
+      <if test="c002 != null" >
+        C002 = #{c002,jdbcType=CHAR},
+      </if>
+      <if test="c003 != null" >
+        C003 = #{c003,jdbcType=CHAR},
+      </if>
+      <if test="c004 != null" >
+        C004 = #{c004,jdbcType=CHAR},
+      </if>
+      <if test="c005 != null" >
+        C005 = #{c005,jdbcType=CHAR},
+      </if>
+      <if test="c006 != null" >
+        C006 = #{c006,jdbcType=NCHAR},
+      </if>
+      <if test="c007 != null" >
+        C007 = #{c007,jdbcType=NCHAR},
+      </if>
+      <if test="c008 != null" >
+        C008 = #{c008,jdbcType=NCHAR},
+      </if>
+      <if test="c009 != null" >
+        C009 = #{c009,jdbcType=NCHAR},
+      </if>
+      <if test="c010 != null" >
+        C010 = #{c010,jdbcType=NCHAR},
+      </if>
+      <if test="c011 != null" >
+        C011 = #{c011,jdbcType=NCHAR},
+      </if>
+    </set>
+    where C001 = #{c001,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Company" >
+    update COMPANY
+    set C002 = #{c002,jdbcType=CHAR},
+      C003 = #{c003,jdbcType=CHAR},
+      C004 = #{c004,jdbcType=CHAR},
+      C005 = #{c005,jdbcType=CHAR},
+      C006 = #{c006,jdbcType=NCHAR},
+      C007 = #{c007,jdbcType=NCHAR},
+      C008 = #{c008,jdbcType=NCHAR},
+      C009 = #{c009,jdbcType=NCHAR},
+      C010 = #{c010,jdbcType=NCHAR},
+      C011 = #{c011,jdbcType=NCHAR}
+    where C001 = #{c001,jdbcType=CHAR}
+  </update>
+</mapper>

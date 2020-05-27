@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.mapperdao1.ReportMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Report" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="R001" property="r001" jdbcType="CHAR" />
+    <result column="R002" property="r002" jdbcType="CHAR" />
+    <result column="R003" property="r003" jdbcType="CHAR" />
+    <result column="R004" property="r004" jdbcType="CHAR" />
+    <result column="R005" property="r005" jdbcType="CHAR" />
+    <result column="R006" property="r006" jdbcType="CHAR" />
+    <result column="R007" property="r007" jdbcType="CHAR" />
+    <result column="R008" property="r008" jdbcType="CHAR" />
+    <result column="R009" property="r009" jdbcType="CHAR" />
+    <result column="R010" property="r010" jdbcType="CHAR" />
+    <result column="R011" property="r011" jdbcType="CHAR" />
+    <result column="R012" property="r012" jdbcType="CHAR" />
+    <result column="R013" property="r013" jdbcType="CHAR" />
+    <result column="R014" property="r014" jdbcType="CHAR" />
+    <result column="R015" property="r015" jdbcType="CHAR" />
+    <result column="R016" property="r016" jdbcType="CHAR" />
+    <result column="R017" property="r017" jdbcType="CHAR" />
+    <result column="R018" property="r018" jdbcType="CHAR" />
+    <result column="R019" property="r019" jdbcType="CHAR" />
+    <result column="R020" property="r020" jdbcType="CHAR" />
+    <result column="R021" property="r021" jdbcType="CHAR" />
+    <result column="R022" property="r022" jdbcType="CHAR" />
+    <result column="R023" property="r023" jdbcType="VARCHAR" />
+    <result column="R024" property="r024" jdbcType="VARCHAR" />
+    <result column="R025" property="r025" jdbcType="VARCHAR" />
+    <result column="R026" property="r026" jdbcType="VARCHAR" />
+    <result column="R027" property="r027" jdbcType="VARCHAR" />
+    <result column="R028" property="r028" jdbcType="VARCHAR" />
+    <result column="R029" property="r029" jdbcType="VARCHAR" />
+    <result column="R030" property="r030" jdbcType="VARCHAR" />
+    <result column="R031" property="r031" jdbcType="VARCHAR" />
+    <result column="R032" property="r032" jdbcType="VARCHAR" />
+    <result column="R033" property="r033" jdbcType="VARCHAR" />
+    <result column="R034" property="r034" jdbcType="VARCHAR" />
+    <result column="R035" property="r035" jdbcType="VARCHAR" />
+    <result column="R036" property="r036" jdbcType="VARCHAR" />
+    <result column="R037" property="r037" jdbcType="VARCHAR" />
+    <result column="R038" property="r038" jdbcType="VARCHAR" />
+    <result column="R039" property="r039" jdbcType="VARCHAR" />
+    <result column="R040" property="r040" jdbcType="VARCHAR" />
+    <result column="R041" property="r041" jdbcType="VARCHAR" />
+    <result column="R042" property="r042" jdbcType="VARCHAR" />
+    <result column="R043" property="r043" jdbcType="VARCHAR" />
+    <result column="R044" property="r044" jdbcType="VARCHAR" />
+    <result column="R045" property="r045" jdbcType="VARCHAR" />
+    <result column="R046" property="r046" jdbcType="VARCHAR" />
+    <result column="R047" property="r047" jdbcType="VARCHAR" />
+    <result column="R048" property="r048" jdbcType="VARCHAR" />
+    <result column="R049" property="r049" jdbcType="VARCHAR" />
+    <result column="R050" property="r050" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, R001, R002, R003, R004, R005, R006, R007, R008, R009, R010, R011, R012, R013, 
+    R014, R015, R016, R017, R018, R019, R020, R021, R022, R023, R024, R025, R026, R027, 
+    R028, R029, R030, R031, R032, R033, R034, R035, R036, R037, R038, R039, R040, R041, 
+    R042, R043, R044, R045, R046, R047, R048, R049, R050
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.entity.ReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from REPORT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from REPORT
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from REPORT
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.entity.ReportExample" >
+    delete from REPORT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Report" >
+    insert into REPORT (id, R001, R002, R003, 
+      R004, R005, R006, R007, 
+      R008, R009, R010, R011, 
+      R012, R013, R014, R015, 
+      R016, R017, R018, R019, 
+      R020, R021, R022, R023, 
+      R024, R025, R026, R027, 
+      R028, R029, R030, R031, 
+      R032, R033, R034, R035, 
+      R036, R037, R038, R039, 
+      R040, R041, R042, R043, 
+      R044, R045, R046, R047, 
+      R048, R049, R050)
+    values (#{id,jdbcType=INTEGER}, #{r001,jdbcType=CHAR}, #{r002,jdbcType=CHAR}, #{r003,jdbcType=CHAR}, 
+      #{r004,jdbcType=CHAR}, #{r005,jdbcType=CHAR}, #{r006,jdbcType=CHAR}, #{r007,jdbcType=CHAR}, 
+      #{r008,jdbcType=CHAR}, #{r009,jdbcType=CHAR}, #{r010,jdbcType=CHAR}, #{r011,jdbcType=CHAR}, 
+      #{r012,jdbcType=CHAR}, #{r013,jdbcType=CHAR}, #{r014,jdbcType=CHAR}, #{r015,jdbcType=CHAR}, 
+      #{r016,jdbcType=CHAR}, #{r017,jdbcType=CHAR}, #{r018,jdbcType=CHAR}, #{r019,jdbcType=CHAR}, 
+      #{r020,jdbcType=CHAR}, #{r021,jdbcType=CHAR}, #{r022,jdbcType=CHAR}, #{r023,jdbcType=VARCHAR}, 
+      #{r024,jdbcType=VARCHAR}, #{r025,jdbcType=VARCHAR}, #{r026,jdbcType=VARCHAR}, #{r027,jdbcType=VARCHAR}, 
+      #{r028,jdbcType=VARCHAR}, #{r029,jdbcType=VARCHAR}, #{r030,jdbcType=VARCHAR}, #{r031,jdbcType=VARCHAR}, 
+      #{r032,jdbcType=VARCHAR}, #{r033,jdbcType=VARCHAR}, #{r034,jdbcType=VARCHAR}, #{r035,jdbcType=VARCHAR}, 
+      #{r036,jdbcType=VARCHAR}, #{r037,jdbcType=VARCHAR}, #{r038,jdbcType=VARCHAR}, #{r039,jdbcType=VARCHAR}, 
+      #{r040,jdbcType=VARCHAR}, #{r041,jdbcType=VARCHAR}, #{r042,jdbcType=VARCHAR}, #{r043,jdbcType=VARCHAR}, 
+      #{r044,jdbcType=VARCHAR}, #{r045,jdbcType=VARCHAR}, #{r046,jdbcType=VARCHAR}, #{r047,jdbcType=VARCHAR}, 
+      #{r048,jdbcType=VARCHAR}, #{r049,jdbcType=VARCHAR}, #{r050,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.Report" >
+    insert into REPORT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="r001 != null" >
+        R001,
+      </if>
+      <if test="r002 != null" >
+        R002,
+      </if>
+      <if test="r003 != null" >
+        R003,
+      </if>
+      <if test="r004 != null" >
+        R004,
+      </if>
+      <if test="r005 != null" >
+        R005,
+      </if>
+      <if test="r006 != null" >
+        R006,
+      </if>
+      <if test="r007 != null" >
+        R007,
+      </if>
+      <if test="r008 != null" >
+        R008,
+      </if>
+      <if test="r009 != null" >
+        R009,
+      </if>
+      <if test="r010 != null" >
+        R010,
+      </if>
+      <if test="r011 != null" >
+        R011,
+      </if>
+      <if test="r012 != null" >
+        R012,
+      </if>
+      <if test="r013 != null" >
+        R013,
+      </if>
+      <if test="r014 != null" >
+        R014,
+      </if>
+      <if test="r015 != null" >
+        R015,
+      </if>
+      <if test="r016 != null" >
+        R016,
+      </if>
+      <if test="r017 != null" >
+        R017,
+      </if>
+      <if test="r018 != null" >
+        R018,
+      </if>
+      <if test="r019 != null" >
+        R019,
+      </if>
+      <if test="r020 != null" >
+        R020,
+      </if>
+      <if test="r021 != null" >
+        R021,
+      </if>
+      <if test="r022 != null" >
+        R022,
+      </if>
+      <if test="r023 != null" >
+        R023,
+      </if>
+      <if test="r024 != null" >
+        R024,
+      </if>
+      <if test="r025 != null" >
+        R025,
+      </if>
+      <if test="r026 != null" >
+        R026,
+      </if>
+      <if test="r027 != null" >
+        R027,
+      </if>
+      <if test="r028 != null" >
+        R028,
+      </if>
+      <if test="r029 != null" >
+        R029,
+      </if>
+      <if test="r030 != null" >
+        R030,
+      </if>
+      <if test="r031 != null" >
+        R031,
+      </if>
+      <if test="r032 != null" >
+        R032,
+      </if>
+      <if test="r033 != null" >
+        R033,
+      </if>
+      <if test="r034 != null" >
+        R034,
+      </if>
+      <if test="r035 != null" >
+        R035,
+      </if>
+      <if test="r036 != null" >
+        R036,
+      </if>
+      <if test="r037 != null" >
+        R037,
+      </if>
+      <if test="r038 != null" >
+        R038,
+      </if>
+      <if test="r039 != null" >
+        R039,
+      </if>
+      <if test="r040 != null" >
+        R040,
+      </if>
+      <if test="r041 != null" >
+        R041,
+      </if>
+      <if test="r042 != null" >
+        R042,
+      </if>
+      <if test="r043 != null" >
+        R043,
+      </if>
+      <if test="r044 != null" >
+        R044,
+      </if>
+      <if test="r045 != null" >
+        R045,
+      </if>
+      <if test="r046 != null" >
+        R046,
+      </if>
+      <if test="r047 != null" >
+        R047,
+      </if>
+      <if test="r048 != null" >
+        R048,
+      </if>
+      <if test="r049 != null" >
+        R049,
+      </if>
+      <if test="r050 != null" >
+        R050,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="r001 != null" >
+        #{r001,jdbcType=CHAR},
+      </if>
+      <if test="r002 != null" >
+        #{r002,jdbcType=CHAR},
+      </if>
+      <if test="r003 != null" >
+        #{r003,jdbcType=CHAR},
+      </if>
+      <if test="r004 != null" >
+        #{r004,jdbcType=CHAR},
+      </if>
+      <if test="r005 != null" >
+        #{r005,jdbcType=CHAR},
+      </if>
+      <if test="r006 != null" >
+        #{r006,jdbcType=CHAR},
+      </if>
+      <if test="r007 != null" >
+        #{r007,jdbcType=CHAR},
+      </if>
+      <if test="r008 != null" >
+        #{r008,jdbcType=CHAR},
+      </if>
+      <if test="r009 != null" >
+        #{r009,jdbcType=CHAR},
+      </if>
+      <if test="r010 != null" >
+        #{r010,jdbcType=CHAR},
+      </if>
+      <if test="r011 != null" >
+        #{r011,jdbcType=CHAR},
+      </if>
+      <if test="r012 != null" >
+        #{r012,jdbcType=CHAR},
+      </if>
+      <if test="r013 != null" >
+        #{r013,jdbcType=CHAR},
+      </if>
+      <if test="r014 != null" >
+        #{r014,jdbcType=CHAR},
+      </if>
+      <if test="r015 != null" >
+        #{r015,jdbcType=CHAR},
+      </if>
+      <if test="r016 != null" >
+        #{r016,jdbcType=CHAR},
+      </if>
+      <if test="r017 != null" >
+        #{r017,jdbcType=CHAR},
+      </if>
+      <if test="r018 != null" >
+        #{r018,jdbcType=CHAR},
+      </if>
+      <if test="r019 != null" >
+        #{r019,jdbcType=CHAR},
+      </if>
+      <if test="r020 != null" >
+        #{r020,jdbcType=CHAR},
+      </if>
+      <if test="r021 != null" >
+        #{r021,jdbcType=CHAR},
+      </if>
+      <if test="r022 != null" >
+        #{r022,jdbcType=CHAR},
+      </if>
+      <if test="r023 != null" >
+        #{r023,jdbcType=VARCHAR},
+      </if>
+      <if test="r024 != null" >
+        #{r024,jdbcType=VARCHAR},
+      </if>
+      <if test="r025 != null" >
+        #{r025,jdbcType=VARCHAR},
+      </if>
+      <if test="r026 != null" >
+        #{r026,jdbcType=VARCHAR},
+      </if>
+      <if test="r027 != null" >
+        #{r027,jdbcType=VARCHAR},
+      </if>
+      <if test="r028 != null" >
+        #{r028,jdbcType=VARCHAR},
+      </if>
+      <if test="r029 != null" >
+        #{r029,jdbcType=VARCHAR},
+      </if>
+      <if test="r030 != null" >
+        #{r030,jdbcType=VARCHAR},
+      </if>
+      <if test="r031 != null" >
+        #{r031,jdbcType=VARCHAR},
+      </if>
+      <if test="r032 != null" >
+        #{r032,jdbcType=VARCHAR},
+      </if>
+      <if test="r033 != null" >
+        #{r033,jdbcType=VARCHAR},
+      </if>
+      <if test="r034 != null" >
+        #{r034,jdbcType=VARCHAR},
+      </if>
+      <if test="r035 != null" >
+        #{r035,jdbcType=VARCHAR},
+      </if>
+      <if test="r036 != null" >
+        #{r036,jdbcType=VARCHAR},
+      </if>
+      <if test="r037 != null" >
+        #{r037,jdbcType=VARCHAR},
+      </if>
+      <if test="r038 != null" >
+        #{r038,jdbcType=VARCHAR},
+      </if>
+      <if test="r039 != null" >
+        #{r039,jdbcType=VARCHAR},
+      </if>
+      <if test="r040 != null" >
+        #{r040,jdbcType=VARCHAR},
+      </if>
+      <if test="r041 != null" >
+        #{r041,jdbcType=VARCHAR},
+      </if>
+      <if test="r042 != null" >
+        #{r042,jdbcType=VARCHAR},
+      </if>
+      <if test="r043 != null" >
+        #{r043,jdbcType=VARCHAR},
+      </if>
+      <if test="r044 != null" >
+        #{r044,jdbcType=VARCHAR},
+      </if>
+      <if test="r045 != null" >
+        #{r045,jdbcType=VARCHAR},
+      </if>
+      <if test="r046 != null" >
+        #{r046,jdbcType=VARCHAR},
+      </if>
+      <if test="r047 != null" >
+        #{r047,jdbcType=VARCHAR},
+      </if>
+      <if test="r048 != null" >
+        #{r048,jdbcType=VARCHAR},
+      </if>
+      <if test="r049 != null" >
+        #{r049,jdbcType=VARCHAR},
+      </if>
+      <if test="r050 != null" >
+        #{r050,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.entity.ReportExample" resultType="java.lang.Integer" >
+    select count(*) from REPORT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update REPORT
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.r001 != null" >
+        R001 = #{record.r001,jdbcType=CHAR},
+      </if>
+      <if test="record.r002 != null" >
+        R002 = #{record.r002,jdbcType=CHAR},
+      </if>
+      <if test="record.r003 != null" >
+        R003 = #{record.r003,jdbcType=CHAR},
+      </if>
+      <if test="record.r004 != null" >
+        R004 = #{record.r004,jdbcType=CHAR},
+      </if>
+      <if test="record.r005 != null" >
+        R005 = #{record.r005,jdbcType=CHAR},
+      </if>
+      <if test="record.r006 != null" >
+        R006 = #{record.r006,jdbcType=CHAR},
+      </if>
+      <if test="record.r007 != null" >
+        R007 = #{record.r007,jdbcType=CHAR},
+      </if>
+      <if test="record.r008 != null" >
+        R008 = #{record.r008,jdbcType=CHAR},
+      </if>
+      <if test="record.r009 != null" >
+        R009 = #{record.r009,jdbcType=CHAR},
+      </if>
+      <if test="record.r010 != null" >
+        R010 = #{record.r010,jdbcType=CHAR},
+      </if>
+      <if test="record.r011 != null" >
+        R011 = #{record.r011,jdbcType=CHAR},
+      </if>
+      <if test="record.r012 != null" >
+        R012 = #{record.r012,jdbcType=CHAR},
+      </if>
+      <if test="record.r013 != null" >
+        R013 = #{record.r013,jdbcType=CHAR},
+      </if>
+      <if test="record.r014 != null" >
+        R014 = #{record.r014,jdbcType=CHAR},
+      </if>
+      <if test="record.r015 != null" >
+        R015 = #{record.r015,jdbcType=CHAR},
+      </if>
+      <if test="record.r016 != null" >
+        R016 = #{record.r016,jdbcType=CHAR},
+      </if>
+      <if test="record.r017 != null" >
+        R017 = #{record.r017,jdbcType=CHAR},
+      </if>
+      <if test="record.r018 != null" >
+        R018 = #{record.r018,jdbcType=CHAR},
+      </if>
+      <if test="record.r019 != null" >
+        R019 = #{record.r019,jdbcType=CHAR},
+      </if>
+      <if test="record.r020 != null" >
+        R020 = #{record.r020,jdbcType=CHAR},
+      </if>
+      <if test="record.r021 != null" >
+        R021 = #{record.r021,jdbcType=CHAR},
+      </if>
+      <if test="record.r022 != null" >
+        R022 = #{record.r022,jdbcType=CHAR},
+      </if>
+      <if test="record.r023 != null" >
+        R023 = #{record.r023,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r024 != null" >
+        R024 = #{record.r024,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r025 != null" >
+        R025 = #{record.r025,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r026 != null" >
+        R026 = #{record.r026,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r027 != null" >
+        R027 = #{record.r027,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r028 != null" >
+        R028 = #{record.r028,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r029 != null" >
+        R029 = #{record.r029,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r030 != null" >
+        R030 = #{record.r030,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r031 != null" >
+        R031 = #{record.r031,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r032 != null" >
+        R032 = #{record.r032,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r033 != null" >
+        R033 = #{record.r033,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r034 != null" >
+        R034 = #{record.r034,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r035 != null" >
+        R035 = #{record.r035,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r036 != null" >
+        R036 = #{record.r036,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r037 != null" >
+        R037 = #{record.r037,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r038 != null" >
+        R038 = #{record.r038,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r039 != null" >
+        R039 = #{record.r039,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r040 != null" >
+        R040 = #{record.r040,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r041 != null" >
+        R041 = #{record.r041,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r042 != null" >
+        R042 = #{record.r042,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r043 != null" >
+        R043 = #{record.r043,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r044 != null" >
+        R044 = #{record.r044,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r045 != null" >
+        R045 = #{record.r045,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r046 != null" >
+        R046 = #{record.r046,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r047 != null" >
+        R047 = #{record.r047,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r048 != null" >
+        R048 = #{record.r048,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r049 != null" >
+        R049 = #{record.r049,jdbcType=VARCHAR},
+      </if>
+      <if test="record.r050 != null" >
+        R050 = #{record.r050,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update REPORT
+    set id = #{record.id,jdbcType=INTEGER},
+      R001 = #{record.r001,jdbcType=CHAR},
+      R002 = #{record.r002,jdbcType=CHAR},
+      R003 = #{record.r003,jdbcType=CHAR},
+      R004 = #{record.r004,jdbcType=CHAR},
+      R005 = #{record.r005,jdbcType=CHAR},
+      R006 = #{record.r006,jdbcType=CHAR},
+      R007 = #{record.r007,jdbcType=CHAR},
+      R008 = #{record.r008,jdbcType=CHAR},
+      R009 = #{record.r009,jdbcType=CHAR},
+      R010 = #{record.r010,jdbcType=CHAR},
+      R011 = #{record.r011,jdbcType=CHAR},
+      R012 = #{record.r012,jdbcType=CHAR},
+      R013 = #{record.r013,jdbcType=CHAR},
+      R014 = #{record.r014,jdbcType=CHAR},
+      R015 = #{record.r015,jdbcType=CHAR},
+      R016 = #{record.r016,jdbcType=CHAR},
+      R017 = #{record.r017,jdbcType=CHAR},
+      R018 = #{record.r018,jdbcType=CHAR},
+      R019 = #{record.r019,jdbcType=CHAR},
+      R020 = #{record.r020,jdbcType=CHAR},
+      R021 = #{record.r021,jdbcType=CHAR},
+      R022 = #{record.r022,jdbcType=CHAR},
+      R023 = #{record.r023,jdbcType=VARCHAR},
+      R024 = #{record.r024,jdbcType=VARCHAR},
+      R025 = #{record.r025,jdbcType=VARCHAR},
+      R026 = #{record.r026,jdbcType=VARCHAR},
+      R027 = #{record.r027,jdbcType=VARCHAR},
+      R028 = #{record.r028,jdbcType=VARCHAR},
+      R029 = #{record.r029,jdbcType=VARCHAR},
+      R030 = #{record.r030,jdbcType=VARCHAR},
+      R031 = #{record.r031,jdbcType=VARCHAR},
+      R032 = #{record.r032,jdbcType=VARCHAR},
+      R033 = #{record.r033,jdbcType=VARCHAR},
+      R034 = #{record.r034,jdbcType=VARCHAR},
+      R035 = #{record.r035,jdbcType=VARCHAR},
+      R036 = #{record.r036,jdbcType=VARCHAR},
+      R037 = #{record.r037,jdbcType=VARCHAR},
+      R038 = #{record.r038,jdbcType=VARCHAR},
+      R039 = #{record.r039,jdbcType=VARCHAR},
+      R040 = #{record.r040,jdbcType=VARCHAR},
+      R041 = #{record.r041,jdbcType=VARCHAR},
+      R042 = #{record.r042,jdbcType=VARCHAR},
+      R043 = #{record.r043,jdbcType=VARCHAR},
+      R044 = #{record.r044,jdbcType=VARCHAR},
+      R045 = #{record.r045,jdbcType=VARCHAR},
+      R046 = #{record.r046,jdbcType=VARCHAR},
+      R047 = #{record.r047,jdbcType=VARCHAR},
+      R048 = #{record.r048,jdbcType=VARCHAR},
+      R049 = #{record.r049,jdbcType=VARCHAR},
+      R050 = #{record.r050,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Report" >
+    update REPORT
+    <set >
+      <if test="r001 != null" >
+        R001 = #{r001,jdbcType=CHAR},
+      </if>
+      <if test="r002 != null" >
+        R002 = #{r002,jdbcType=CHAR},
+      </if>
+      <if test="r003 != null" >
+        R003 = #{r003,jdbcType=CHAR},
+      </if>
+      <if test="r004 != null" >
+        R004 = #{r004,jdbcType=CHAR},
+      </if>
+      <if test="r005 != null" >
+        R005 = #{r005,jdbcType=CHAR},
+      </if>
+      <if test="r006 != null" >
+        R006 = #{r006,jdbcType=CHAR},
+      </if>
+      <if test="r007 != null" >
+        R007 = #{r007,jdbcType=CHAR},
+      </if>
+      <if test="r008 != null" >
+        R008 = #{r008,jdbcType=CHAR},
+      </if>
+      <if test="r009 != null" >
+        R009 = #{r009,jdbcType=CHAR},
+      </if>
+      <if test="r010 != null" >
+        R010 = #{r010,jdbcType=CHAR},
+      </if>
+      <if test="r011 != null" >
+        R011 = #{r011,jdbcType=CHAR},
+      </if>
+      <if test="r012 != null" >
+        R012 = #{r012,jdbcType=CHAR},
+      </if>
+      <if test="r013 != null" >
+        R013 = #{r013,jdbcType=CHAR},
+      </if>
+      <if test="r014 != null" >
+        R014 = #{r014,jdbcType=CHAR},
+      </if>
+      <if test="r015 != null" >
+        R015 = #{r015,jdbcType=CHAR},
+      </if>
+      <if test="r016 != null" >
+        R016 = #{r016,jdbcType=CHAR},
+      </if>
+      <if test="r017 != null" >
+        R017 = #{r017,jdbcType=CHAR},
+      </if>
+      <if test="r018 != null" >
+        R018 = #{r018,jdbcType=CHAR},
+      </if>
+      <if test="r019 != null" >
+        R019 = #{r019,jdbcType=CHAR},
+      </if>
+      <if test="r020 != null" >
+        R020 = #{r020,jdbcType=CHAR},
+      </if>
+      <if test="r021 != null" >
+        R021 = #{r021,jdbcType=CHAR},
+      </if>
+      <if test="r022 != null" >
+        R022 = #{r022,jdbcType=CHAR},
+      </if>
+      <if test="r023 != null" >
+        R023 = #{r023,jdbcType=VARCHAR},
+      </if>
+      <if test="r024 != null" >
+        R024 = #{r024,jdbcType=VARCHAR},
+      </if>
+      <if test="r025 != null" >
+        R025 = #{r025,jdbcType=VARCHAR},
+      </if>
+      <if test="r026 != null" >
+        R026 = #{r026,jdbcType=VARCHAR},
+      </if>
+      <if test="r027 != null" >
+        R027 = #{r027,jdbcType=VARCHAR},
+      </if>
+      <if test="r028 != null" >
+        R028 = #{r028,jdbcType=VARCHAR},
+      </if>
+      <if test="r029 != null" >
+        R029 = #{r029,jdbcType=VARCHAR},
+      </if>
+      <if test="r030 != null" >
+        R030 = #{r030,jdbcType=VARCHAR},
+      </if>
+      <if test="r031 != null" >
+        R031 = #{r031,jdbcType=VARCHAR},
+      </if>
+      <if test="r032 != null" >
+        R032 = #{r032,jdbcType=VARCHAR},
+      </if>
+      <if test="r033 != null" >
+        R033 = #{r033,jdbcType=VARCHAR},
+      </if>
+      <if test="r034 != null" >
+        R034 = #{r034,jdbcType=VARCHAR},
+      </if>
+      <if test="r035 != null" >
+        R035 = #{r035,jdbcType=VARCHAR},
+      </if>
+      <if test="r036 != null" >
+        R036 = #{r036,jdbcType=VARCHAR},
+      </if>
+      <if test="r037 != null" >
+        R037 = #{r037,jdbcType=VARCHAR},
+      </if>
+      <if test="r038 != null" >
+        R038 = #{r038,jdbcType=VARCHAR},
+      </if>
+      <if test="r039 != null" >
+        R039 = #{r039,jdbcType=VARCHAR},
+      </if>
+      <if test="r040 != null" >
+        R040 = #{r040,jdbcType=VARCHAR},
+      </if>
+      <if test="r041 != null" >
+        R041 = #{r041,jdbcType=VARCHAR},
+      </if>
+      <if test="r042 != null" >
+        R042 = #{r042,jdbcType=VARCHAR},
+      </if>
+      <if test="r043 != null" >
+        R043 = #{r043,jdbcType=VARCHAR},
+      </if>
+      <if test="r044 != null" >
+        R044 = #{r044,jdbcType=VARCHAR},
+      </if>
+      <if test="r045 != null" >
+        R045 = #{r045,jdbcType=VARCHAR},
+      </if>
+      <if test="r046 != null" >
+        R046 = #{r046,jdbcType=VARCHAR},
+      </if>
+      <if test="r047 != null" >
+        R047 = #{r047,jdbcType=VARCHAR},
+      </if>
+      <if test="r048 != null" >
+        R048 = #{r048,jdbcType=VARCHAR},
+      </if>
+      <if test="r049 != null" >
+        R049 = #{r049,jdbcType=VARCHAR},
+      </if>
+      <if test="r050 != null" >
+        R050 = #{r050,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Report" >
+    update REPORT
+    set R001 = #{r001,jdbcType=CHAR},
+      R002 = #{r002,jdbcType=CHAR},
+      R003 = #{r003,jdbcType=CHAR},
+      R004 = #{r004,jdbcType=CHAR},
+      R005 = #{r005,jdbcType=CHAR},
+      R006 = #{r006,jdbcType=CHAR},
+      R007 = #{r007,jdbcType=CHAR},
+      R008 = #{r008,jdbcType=CHAR},
+      R009 = #{r009,jdbcType=CHAR},
+      R010 = #{r010,jdbcType=CHAR},
+      R011 = #{r011,jdbcType=CHAR},
+      R012 = #{r012,jdbcType=CHAR},
+      R013 = #{r013,jdbcType=CHAR},
+      R014 = #{r014,jdbcType=CHAR},
+      R015 = #{r015,jdbcType=CHAR},
+      R016 = #{r016,jdbcType=CHAR},
+      R017 = #{r017,jdbcType=CHAR},
+      R018 = #{r018,jdbcType=CHAR},
+      R019 = #{r019,jdbcType=CHAR},
+      R020 = #{r020,jdbcType=CHAR},
+      R021 = #{r021,jdbcType=CHAR},
+      R022 = #{r022,jdbcType=CHAR},
+      R023 = #{r023,jdbcType=VARCHAR},
+      R024 = #{r024,jdbcType=VARCHAR},
+      R025 = #{r025,jdbcType=VARCHAR},
+      R026 = #{r026,jdbcType=VARCHAR},
+      R027 = #{r027,jdbcType=VARCHAR},
+      R028 = #{r028,jdbcType=VARCHAR},
+      R029 = #{r029,jdbcType=VARCHAR},
+      R030 = #{r030,jdbcType=VARCHAR},
+      R031 = #{r031,jdbcType=VARCHAR},
+      R032 = #{r032,jdbcType=VARCHAR},
+      R033 = #{r033,jdbcType=VARCHAR},
+      R034 = #{r034,jdbcType=VARCHAR},
+      R035 = #{r035,jdbcType=VARCHAR},
+      R036 = #{r036,jdbcType=VARCHAR},
+      R037 = #{r037,jdbcType=VARCHAR},
+      R038 = #{r038,jdbcType=VARCHAR},
+      R039 = #{r039,jdbcType=VARCHAR},
+      R040 = #{r040,jdbcType=VARCHAR},
+      R041 = #{r041,jdbcType=VARCHAR},
+      R042 = #{r042,jdbcType=VARCHAR},
+      R043 = #{r043,jdbcType=VARCHAR},
+      R044 = #{r044,jdbcType=VARCHAR},
+      R045 = #{r045,jdbcType=VARCHAR},
+      R046 = #{r046,jdbcType=VARCHAR},
+      R047 = #{r047,jdbcType=VARCHAR},
+      R048 = #{r048,jdbcType=VARCHAR},
+      R049 = #{r049,jdbcType=VARCHAR},
+      R050 = #{r050,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
