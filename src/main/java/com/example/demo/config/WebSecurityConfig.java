@@ -10,7 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
 
 /**
  * 对 security 权限的配置类
@@ -57,6 +62,15 @@ public class WebSecurityConfig {
 //        return manager;
 //    }
 
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST"));
+        corsConfiguration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
+    }
 
     /**
      * security 配置
@@ -88,7 +102,9 @@ public class WebSecurityConfig {
 //                        .antMatchers("/level1/**").hasRole("ONE")
 //                        .antMatchers("/level2/**").hasRole("TWO")
 //                        .antMatchers("/level3/**").hasRole("ONE")
-                        .anyRequest().authenticated();
+                        .anyRequest().authenticated()
+                        .and()
+                        .cors();
 
                 // 开启表单认证
                 http
