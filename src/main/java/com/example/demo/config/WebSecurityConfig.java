@@ -97,7 +97,7 @@ public class WebSecurityConfig {
                 http
                         .authorizeRequests()
                         // 放行登录
-                        .antMatchers("/machine/**", "/error/**").permitAll() //放行文件
+                        .antMatchers("/machine/**", "/error/**","report/**").permitAll() //放行文件
 //                        .antMatchers("/**").hasRole("/admin")
 //                        .antMatchers("/level1/**").hasRole("ONE")
 //                        .antMatchers("/level2/**").hasRole("TWO")
