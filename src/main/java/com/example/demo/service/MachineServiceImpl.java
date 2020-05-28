@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.mapperdao1.EuserMapper;
 import com.example.demo.dao.mapperdao1.MachineMapper;
+import com.example.demo.entity.Euser;
 import com.example.demo.util.CommonUtil;
 import com.example.demo.util.SessionUtil;
 import com.example.demo.util.UrlUtil;
@@ -16,11 +18,12 @@ import java.util.Map;
  */
 @Service
 public class MachineServiceImpl {
-    @Autowired
-    MachineMapper machineMapper;
 
     @Autowired
     ReportServiceImpl reportService;
+
+    @Autowired
+    UserDetailServiceImpl userDetailService;
 
 
     /**
@@ -91,7 +94,15 @@ public class MachineServiceImpl {
         }
         if (SessionUtil.getSessionAttribute("waterNumber") == null) {
             SessionUtil.setSessionAttribute("waterNumber", reportService.getWaterNumber());
+        } else {
+            if (reportService.eqCommit((String) SessionUtil.getSessionAttribute("waterNumber"))) {
+                SessionUtil.setSessionAttribute("waterNumber", reportService.getWaterNumber());
+            }
         }
+        String u001 = (String) SessionUtil.getSessionAttribute("U001");//登录人的账户
+        Euser euser = userDetailService.getEuser(u001);
+        machineInformation.put("name", euser.getU003());//账号人姓名
+        machineInformation.put("phone", euser.getU007());//账号人的联系方式
         SessionUtil.setSessionAttribute("m001", m001);
         return machineInformation;
     }

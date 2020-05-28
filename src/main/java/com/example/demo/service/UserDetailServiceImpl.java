@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.mapperdao1.EuserMapper;
 import com.example.demo.entity.Euser;
+import com.example.demo.entity.EuserExample;
 import com.example.demo.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -50,5 +51,27 @@ public class UserDetailServiceImpl {
         // 构建 Security 的 User 对象
         User user = new User(euser.getU001(),euser.getU002(), authorities);
         return user;
+    }
+
+    /**
+     * 通过主键获取用户信息
+     * @param u001
+     * @return
+     */
+    public Euser getEuser(String u001) {
+        return euserMapper.selectByPrimaryKey(u001);
+    }
+
+    /**
+     * 通过职务（u008）获取用户信息
+     * @param u008
+     * @return
+     */
+    public List<Euser> getUserByU008(String u008) {
+        EuserExample euserExample = new EuserExample();
+        EuserExample.Criteria criteria = euserExample.createCriteria();
+        criteria.andU008EqualTo(u008);
+        List<Euser> eusers = euserMapper.selectByExample(euserExample);
+        return eusers;
     }
 }

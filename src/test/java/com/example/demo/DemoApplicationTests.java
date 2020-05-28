@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -30,8 +31,10 @@ public class DemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		String waterNumber = reportService.getWaterNumber();
-		System.out.println(waterNumber);
+		Map<String, Object> handler2 = reportService.getHandler2();
+		System.out.println(handler2);
+//		String waterNumber = reportService.getWaterNumber();
+//		System.out.println(waterNumber);
 //		Map<String, String> machineInformation = machineService.getMachineInformation("5ec330d483ef2e00016082b9");
 //		System.out.println(machineInformation);
 

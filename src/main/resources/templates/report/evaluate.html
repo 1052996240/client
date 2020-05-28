@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务评价</title>
+</head>
+<!--<script src="/js/jquery-3.0.0.min.js"></script>-->
+<script src="/js/jquery-3.0.0.min.js"></script>
+<!--<script src="javascript/jquery-3.0.0.min.js"></script>-->
+<body>
+单号：<label id="danhao"></label>
+报修时间：<label id="oldTime"></label><br>
+处理完成时间：<label id="wanchengshijian"></label><br>
+服务建议：<input type="text" id="jianyi"><br>
+速度：<input type="text" id="sudu"><br>
+服务态度：<input type="text" id="fuwutaitu"><br>
+<input type="button" id="tijiao" value="提交评价">
+</body>
+<script>
+    $(function () {
+        var r008 = getParam().r008;
+        var url = "";
+        var jsonObj = {"r008": r008};
+        alert(r008)
+        $.ajax({
+            type: 'POST',
+            url: url + "/report/getReportByR008",
+            dataType: "json",
+            data: JSON.stringify(jsonObj),
+            contentType: "application/json",
+            success: function (data) {
+                $("#danhao").text(r008);
+                $("#oldTime").text(data.r006);
+                $("#wanchengshijian").text(data.r049);
+            }
+        });
+        $("#tijiao").click(function () {
+            var jianyi1 = $("#jianyi").val();
+            var sudu1 = $("#sudu").val();
+            var fuwu1 = $("#fuwutaitu").val();
+            var jsonObj1 = {"r008":r008,"r044": jianyi1, "r045": sudu1, "r046": fuwu1};
+            $.ajax({
+                type: 'POST',
+                url: url + "/report/evaluate",
+                dataType: "json",
+                data: JSON.stringify(jsonObj1),
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.message) {
+                        alert("提交成功");
+                    }
+                }
+            });
+        });
+    });
+    var getParam = function () {
+        try {
+            var url = window.location.href;
+            var result = url.split("?")[1];
+            var keyValue = result.split("&");
+            var obj = {};
+            for (var i = 0; i < keyValue.length; i++) {
+                var item = keyValue[i].split("=");
+                obj[item[0]] = item[1];
+            }
+
+            return obj;
+        } catch (e) {
+            console.warn("There has no param value!");
+        }
+    };
+</script>
+</html>

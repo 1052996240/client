@@ -31,7 +31,7 @@
             <label id="first-lable-title">
                 <h4><strong>基本信息:</strong></h4>
             </label>
-            <table class="table">
+            <table class="table table-condensed">
                 <tr>
                     <td>客户简称:</td>
                     <td><label id="clientName">{{mydata.data.field_zi2Ag__c}}</label></td>
@@ -49,6 +49,12 @@
                     <td><label id="ProDate">{{mydata.chuchangdata}}</label></td>
                     <td>报修截止日:</td>
                     <td><label id="Repair">{{mydata.baoxiudata}}</label></td>
+                </tr>
+                <tr>
+                    <td>姓名:</td>
+                    <td><input type="text" style="width: 80%" id="name"  v-model="mydata.name" ></td>
+                    <td>联系方式:</td>
+                    <td><input type="text" style="width:100%" id="phone" v-model=mydata.phone></td>
                 </tr>
             </table>
             <input id="reCode1" type="text" style="display: none;"/>
@@ -97,7 +103,7 @@
 <!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
 <script>
     var mb001;
-    var url="";
+    var url = "";
     $(function () {
         mb001 = getParam().MB001;
         url = '/machine/getMachineInformation/' + mb001;
@@ -169,7 +175,6 @@
     });
 
 
-
     function deleteImg() {
         document.getElementById("demo2").innerHTML = "";
         document.getElementById("imgView").style = "display:none";
@@ -178,13 +183,20 @@
         var code1 = $("#reCode1").val();
         var code2 = $("#reCode2").val();
         var r008 = $("#postReport").val();
+        var name1 = $("#name").val();
+        var phone1 = $("#phone").val();
+        var json = {"r007": r008, "r018": name1, "r019": phone1};
         $.ajax({
             url: basePath + '/report/repairs',
             type: "POST",
-            data: JSON.stringify({'r007': r008}),
+            data: JSON.stringify(json),
             contentType: 'application/json',
             success: function (data) {
-                alert("提交成功");
+                if (data.message==0) {
+                    alert("报修成功");
+                }else {
+                    alert("报修失败")
+                }
             }
         });
     }
@@ -204,8 +216,6 @@
             console.warn("There has no param value!");
         }
     };
-
-
 
 
 </script>
